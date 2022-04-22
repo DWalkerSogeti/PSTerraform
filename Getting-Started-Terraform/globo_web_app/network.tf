@@ -39,7 +39,7 @@ resource "aws_internet_gateway" "igw" {
 }
 
 resource "aws_subnet" "subnet1" {
-  cidr_block              = var.vpc_subnets_cidr_block[0]
+  cidr_block              = var.vpc_subnets_cidr_blocks[0]
   vpc_id                  = aws_vpc.vpc.id
   map_public_ip_on_launch = var.map_public_ip_on_launch
   availability_zone = data.aws_availability_zones.available.names[0]
@@ -48,7 +48,7 @@ resource "aws_subnet" "subnet1" {
 }
 
 resource "aws_subnet" "subnet2" {
-  cidr_block              = var.vpc_subnets_cidr_block[1]
+  cidr_block              = var.vpc_subnets_cidr_blocks[1]
   vpc_id                  = aws_vpc.vpc.id
   map_public_ip_on_launch = var.map_public_ip_on_launch
   availability_zone = data.aws_availability_zones.available.names[1]
