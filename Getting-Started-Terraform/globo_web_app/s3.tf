@@ -104,20 +104,18 @@ resource "aws_s3_bucket" "web_bucket" {
 }
 
 ## AWS_S3_Object_Bucket
-resource "aws_s3_bucket_object" "website" {
+## Updating bucket object to reflect count changes
+resource "aws_s3_bucket_object" "website_content" {
+  for_each = {
+    website = "/website/index.html"
+    logo = "/website/Globo_logo_Vert.png"
+  }
   bucket = aws_s3_bucket.web_bucket.bucket
-  key    = "/website/index.html"
-  source = "./website/index.html"
+  key    = each.value
+  source = ".${each.value}"
 
   tags = local.common_tags
 
 }
 
-resource "aws_s3_bucket_object" "graphic" {
-  bucket = aws_s3_bucket.web_bucket.bucket
-  key    = "/website/Globo_logo_Vert.png"
-  source = "./website/Globo_logo_Vert.png"
-
-  tags = local.common_tags
-
-}
+## Removing 2nd Bucket Object since its not needed with count updates
