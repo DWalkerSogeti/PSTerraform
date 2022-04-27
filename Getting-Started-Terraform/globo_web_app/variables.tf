@@ -1,3 +1,8 @@
+variable "naming_prefix" {
+  type        = string
+  description = "Naming prefix for all resources"
+  default     = "globoweb"
+}
 variable "aws_region" {
   type        = string
   description = "Region for AWS Resources"
@@ -17,9 +22,9 @@ variable "vpc_cidr_block" {
 }
 
 variable "vpc_subnet_count" {
-  type = number
+  type        = number
   description = "number of subnets to create"
-  default = 2
+  default     = 2
 }
 
 variable "vpc_subnets_cidr_blocks" {
@@ -41,9 +46,9 @@ variable "instance_type" {
 }
 
 variable "instance_count" {
-  type = number
+  type        = number
   description = "Number of instances to create in VPC"
-  default = 2
+  default     = 2
 }
 
 variable "company" {
@@ -55,11 +60,11 @@ variable "company" {
 variable "project" {
   type        = string
   description = "Project name for resource tagging"
-  default = "Globalmantics-web-app"
+  default     = "web-app"
 }
 
 variable "billing_code" {
   type        = string
   description = "Billing code for resource tagging"
-  default = "ACCT8675309"
+  default     = "ACCT8675309"
 }
