@@ -1,6 +1,6 @@
 # INSTANCES #
 resource "aws_instance" "nginx" {
-  count = var.instance_count
+  count                  = var.instance_count
   ami                    = nonsensitive(data.aws_ssm_parameter.ami.value)
   instance_type          = var.instance_type
   subnet_id              = aws_subnet.subnets[count.index].id

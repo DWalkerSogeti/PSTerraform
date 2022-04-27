@@ -108,7 +108,7 @@ resource "aws_s3_bucket" "web_bucket" {
 resource "aws_s3_bucket_object" "website_content" {
   for_each = {
     website = "/website/index.html"
-    logo = "/website/Globo_logo_Vert.png"
+    logo    = "/website/Globo_logo_Vert.png"
   }
   bucket = aws_s3_bucket.web_bucket.bucket
   key    = each.value

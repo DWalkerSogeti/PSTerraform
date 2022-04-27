@@ -49,7 +49,7 @@ resource "aws_lb_listener" "nginx" {
 ## aws_lb_target_group_attachment
 ## removed 1 and 2 ngnix and created count entry
 resource "aws_lb_target_group_attachment" "ngnix" {
-  count = var.instance_count
+  count            = var.instance_count
   target_group_arn = aws_lb_target_group.nginx.arn
   target_id        = aws_instance.nginx[count.index].id
   port             = 80
