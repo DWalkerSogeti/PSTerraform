@@ -55,9 +55,11 @@ variable "company" {
 variable "project" {
   type        = string
   description = "Project name for resource tagging"
+  default = "Globalmantics-web-app"
 }
 
 variable "billing_code" {
   type        = string
   description = "Billing code for resource tagging"
+  default = "ACCT8675309"
 }
