@@ -1,8 +1,9 @@
 # INSTANCES #
-resource "aws_instance" "nginx1" {
+resource "aws_instance" "nginx" {
+  count                  = var.instance_count
   ami                    = nonsensitive(data.aws_ssm_parameter.ami.value)
   instance_type          = var.instance_type
-  subnet_id              = aws_subnet.subnet1.id
+  subnet_id              = aws_subnet.subnets[count.index].id
   vpc_security_group_ids = [aws_security_group.nginx-sg.id]
   iam_instance_profile   = aws_iam_instance_profile.nginx_profile.name
   depends_on = [
