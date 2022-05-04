@@ -7,7 +7,7 @@ resource "aws_lb" "nginx" {
   internal           = false
   load_balancer_type = "application"
   security_groups    = [aws_security_group.alb_sg.id]
-  subnets            = aws_subnet.subnets[*].id
+  subnets            = module.vpc.public_subnets ## Updating to ref. new module and all public subnets
 
   enable_deletion_protection = false
 
