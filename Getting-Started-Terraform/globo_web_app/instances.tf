@@ -14,6 +14,8 @@ resource "aws_instance" "nginx" {
     s3_bucket_name = aws_s3_bucket.web_bucket.id
   })
 
-  tags = local.common_tags
+    tags = merge(local.common_tags, {
+    Name = "${local.name_prefix}-nginx-${count.index}"
+  })
 
 }
